@@ -25,14 +25,26 @@ const generateCombinations = (array: string[]) => {
   return result;
 };
 
-test('validateBuildTarget', () => {
+test('validateBuildTarget with no input', () => {
+  expect(() => validateBuildTarget([])).toThrow('No build targets found');
+});
+
+test('validateBuildTarget with empty string', () => {
+  expect(() => validateBuildTarget([''])).toThrow(
+    'Build target should not be empty',
+  );
+});
+
+test('validateBuildTarget with every patterns', () => {
   // Generate all combinations of the targets array
   const allCombinations = generateCombinations(targets);
 
   // Test each combination
   allCombinations.forEach((combination) => {
     const spy = jest.spyOn(core, 'warning');
-
+    if (combination.length === 0) {
+      return;
+    }
     expect(validateBuildTarget(combination)).toBeUndefined();
     if (
       combination.some((target) => !suppoertedBuildTargets.includes(target))

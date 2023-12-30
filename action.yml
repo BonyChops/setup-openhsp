@@ -2,7 +2,7 @@ name: 'Setup OpenHSP environment'
 description: 'Set up your GitHub Actions workflow with a specific version of OpenHSP.'
 author: 'BonyChops'
 inputs:
-  build-target:
+  build-targets:
     description: 'Specify the build target.'
     required: false
     default: |

@@ -4,7 +4,8 @@
   "plugins": ["@typescript-eslint"],
   "env": {
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "ignorePatterns": ["dist"],
   "parserOptions": {

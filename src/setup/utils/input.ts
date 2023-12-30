@@ -8,6 +8,10 @@ export function validateBuildTarget(input: string[]) {
     throw new Error('No build targets found');
   }
 
+  if (!input.every((target) => target !== '')) {
+    throw new Error('Build target should not be empty');
+  }
+
   const unsupportedTargets = input.filter(
     (target) => !suppoertedBuildTargets.includes(target),
   );

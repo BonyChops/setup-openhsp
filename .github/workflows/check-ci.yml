@@ -1,0 +1,29 @@
+name: Check TypeScript
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+  workflow_dispatch:
+
+jobs:
+  check_ts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./typescript
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache-dependency-path: 'typescript'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run test
+      - run:

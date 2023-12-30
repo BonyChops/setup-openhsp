@@ -1,0 +1,25 @@
+name: 'Setup OpenHSP environment'
+description: 'Set up your GitHub Actions workflow with a specific version of OpenHSP.'
+author: 'BonyChops'
+inputs:
+  build-target:
+    description: 'Specify the build target.'
+    required: false
+    default: |
+      hspcmp
+      hsp3cl
+  openhsp-version:
+    description: 'Specify the OpenHSP version.'
+    required: false
+    default: 'v3.6'
+  parallel-build-num:
+    description: 'Specify the number of parallel builds.'
+    required: false
+    default: '3'
+  verbose:
+    description: 'Specify whether to output verbose logs.'
+    required: false
+    default: 'false'
+runs:
+  using: 'node18'
+  main: 'dist/index.js'

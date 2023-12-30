@@ -46,6 +46,7 @@ test('validateBuildTarget with every patterns', () => {
     if (combination.length === 0) {
       return;
     }
+    combination.sort();
     expect(validateBuildTarget(combination)).toBeUndefined();
     if (
       combination.some((target) => !suppoertedBuildTargets.includes(target))
@@ -63,14 +64,14 @@ test('validateBuildTarget with every patterns', () => {
   });
 });
 
-test('validateBuildTarget with empty array', () => {
+test('getBuildTargets with every patterns', () => {
   // Generate all combinations of the targets array
   const allCombinations = generateCombinations(targets);
 
   // Test each combination
   allCombinations.forEach((combination) => {
     const spy = jest.spyOn(core, 'warning');
-
+    combination.sort();
     expect(getBuildTargets(combination.join('\n'))).toStrictEqual(combination);
     if (
       combination.some((target) => !suppoertedBuildTargets.includes(target))
@@ -86,6 +87,10 @@ test('validateBuildTarget with empty array', () => {
       );
     }
   });
+});
+
+test("getBuildTargets with unsorted order ['hspcmp', 'hsp3cl']", () => {
+  expect(getBuildTargets('hspcmp\nhsp3cl')).toStrictEqual(['hsp3cl', 'hspcmp']);
 });
 
 test('validateOpenHSPVersion', () => {

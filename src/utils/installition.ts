@@ -1,4 +1,4 @@
-import { info } from '@actions/core';
+import { debug, info } from '@actions/core';
 import { cacheDir, downloadTool, extractTar } from '@actions/tool-cache';
 import { PromisePool } from '@supercharge/promise-pool';
 import { execSync } from 'child_process';
@@ -21,7 +21,9 @@ export async function setupOpenHSP(
   );
   info('Extracting OpenHSP...');
   const extractPath = await extractTar(downloadPath);
-
+  if (verbose) {
+    debug(`extractedPath: ${extractPath}`);
+  }
   if (parallelNum > 1) {
     info('Building OpenHSP...');
     const { results, errors } = await PromisePool.for(targets)

@@ -20,8 +20,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Setup OpenHSP
         uses: ./
-        with:
-          verbose: true
       - name: Build Sample Source
         run: hspcmp ./tests/sample.hsp -o./tests/sample.ax
       - name: Run Sample Source

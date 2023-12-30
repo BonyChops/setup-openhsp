@@ -68,7 +68,7 @@ export function getInputs(): {
   const buildTargets = getBuildTargets(getInput('build-targets'));
   const openHSPVersion = getOpenHSPVersion(getInput('openhsp-version'));
   const parallelBuildNumber = getParallelBuildNumber(
-    getInput('parallel-build-number'),
+    getInput('parallel-build-num'),
   );
   const verbose = getVerbose(getInput('verbose'));
   return {

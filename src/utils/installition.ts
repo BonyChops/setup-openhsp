@@ -1,5 +1,5 @@
 import { debug, info } from '@actions/core';
-import { cacheDir, downloadTool, extractTar } from '@actions/tool-cache';
+import { cacheDir, downloadTool, extractTar, find } from '@actions/tool-cache';
 import { PromisePool } from '@supercharge/promise-pool';
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -14,6 +14,14 @@ export async function setupOpenHSP(
   targets: string[],
   parallelNum: number,
 ): Promise<string> {
+  const toolPath = find(`openhsp-${targets.join('-')}`, version);
+  if (toolPath) {
+    info(`Found in cache @ ${toolPath}`);
+    return toolPath;
+  }
+
+  // If not found in cache, download
+
   info('Downloading OpenHSP...');
   const downloadPath = await downloadTool(
     getFetchUrl(version),
@@ -71,7 +79,11 @@ export async function setupOpenHSP(
     });
   }
 
-  const toolCachedDir = await cacheDir(extractPath, 'openhsp-test ', version);
+  const toolCachedDir = await cacheDir(
+    extractPath,
+    `openhsp-${targets.join('-')}`,
+    version,
+  );
 
   return toolCachedDir;
 }

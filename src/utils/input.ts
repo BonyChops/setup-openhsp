@@ -28,6 +28,7 @@ export function validateBuildTarget(input: string[]) {
 
 export function getBuildTargets(input: string): string[] {
   const r = input.split('\n').map((line) => line.trim());
+  r.sort();
   validateBuildTarget(r);
   return r;
 }

@@ -22,12 +22,14 @@ jobs:
         uses: ./
         with:
           verbose: true
-      - run: hspcmp ./tests/sample.hsp -o./tests/sample.ax
-      - id: run_hsp
+      - name: Build Sample Source
+        run: hspcmp ./tests/sample.hsp -o./tests/sample.ax
+      - name: Run Sample Source
+        id: run_hsp
         run: |
           echo "HSP_RESULT<<EOF" >> $GITHUB_OUTPUT
           hsp3cl ./tests/sample.ax >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-      - name: test
+      - name: Test
         run: |
           test "${{ steps.run_hsp.outputs.HSP_RESULT }}" = "Hello, HSP!"

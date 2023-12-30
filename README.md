@@ -20,11 +20,11 @@ Set up your GitHub Actions workflow with a specific version of OpenHSP.
 ```yml
 - name: Setup OpenHSP
   uses: BonyChops/setup-openhsp@v1
-  # with:
+  with:
     # (Optional) Specify the list of build targets.
     build-target: |
-        hspcmp
-        hsp3cl
+      hspcmp
+      hsp3cl
 
     # (Optional) Specify the OpenHSP version.
     openhsp-version: v3.6

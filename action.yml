@@ -5,13 +5,13 @@ icon: 'package'
 author: 'BonyChops'
 inputs:
   build-targets:
-    description: 'Specify the list of build targets.'
+    description: 'Specify the list of build targets. Currently supported targets are hspcmp and hsp3cl.'
     required: false
     default: |
       hspcmp
       hsp3cl
   openhsp-version:
-    description: 'Specify the OpenHSP version.'
+    description: 'Specify the OpenHSP version. Currently supported versions are v3.6 and v3.6beta5.'
     required: false
     default: 'v3.6'
   parallel-build-num:

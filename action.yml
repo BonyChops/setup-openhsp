@@ -3,7 +3,7 @@ description: 'Set up your GitHub Actions workflow with a specific version of Ope
 author: 'BonyChops'
 inputs:
   build-targets:
-    description: 'Specify the build target.'
+    description: 'Specify the list of build targets.'
     required: false
     default: |
       hspcmp

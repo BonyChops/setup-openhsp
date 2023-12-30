@@ -1,22 +1,52 @@
 # setup-openhsp
 
 <!-- gha-description-start -->
+
 Set up your GitHub Actions workflow with a specific version of OpenHSP.
+
 <!-- gha-description-end -->
+
+## Example
+
+### Minimal
+
+```yml
+- name: Setup OpenHSP
+  uses: BonyChops/setup-openhsp@v1
+```
+
+### Options
+
+```yml
+- name: Setup OpenHSP
+  uses: BonyChops/setup-openhsp@v1
+  # with:
+    # (Optional) Specify the list of build targets.
+    build-target: |
+        hspcmp
+        hsp3cl
+
+    # (Optional) Specify the OpenHSP version.
+    openhsp-version: v3.6
+
+    # (Optional) parallel-build-num
+    parallel-build-num: 3
+```
 
 ## Inputs
 
 Overview of Inputs.
 
 <!-- gha-inputs-start -->
-### `build-target`
+
+### `build-targets`
 
 **Required:** `false`  
 **Default:** `hspcmp
 hsp3cl
 `
 
-Specify the build target.
+Specify the list of build targets.
 
 ### `openhsp-version`
 
@@ -32,10 +62,4 @@ Specify the OpenHSP version.
 
 Specify the number of parallel builds.
 
-### `verbose`
-
-**Required:** `false`  
-**Default:** `false`
-
-Specify whether to output verbose logs.
 <!-- gha-inputs-end -->

@@ -30,4 +30,4 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
       - name: test
         run: |
-          test "${{ steps.run_hsp.outputs.HSP_RESULT }}" = "Hello, world!"
+          test "${{ steps.run_hsp.outputs.HSP_RESULT }}" = "Hello, HSP!"

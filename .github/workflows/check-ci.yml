@@ -14,9 +14,6 @@ on:
 jobs:
   check_ts:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./typescript
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

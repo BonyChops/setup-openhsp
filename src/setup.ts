@@ -5,14 +5,12 @@ import { info } from 'console';
 
 async function main() {
   try {
-    const { buildTargets, openHSPVersion, parallelBuildNumber, verbose } =
-      getInputs();
+    const { buildTargets, openHSPVersion, parallelBuildNumber } = getInputs();
 
     const binPath = await setupOpenHSP(
       openHSPVersion,
       buildTargets,
       parallelBuildNumber,
-      verbose,
     );
 
     info(`Adding ${binPath} to PATH`);

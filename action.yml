@@ -16,10 +16,6 @@ inputs:
     description: 'Specify the number of parallel builds.'
     required: false
     default: '3'
-  verbose:
-    description: 'Specify whether to output verbose logs.'
-    required: false
-    default: 'false'
 runs:
   using: 'node16'
   main: 'dist/setup/index.js'

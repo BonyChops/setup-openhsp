@@ -135,14 +135,6 @@ test("getVerbose with 'false'", () => {
   expect(getVerbose('false')).toBe(false);
 });
 
-test("getVerbose with 'TRUE'", () => {
-  expect(getVerbose('TRUE')).toBe(true);
-});
-
-test("getVerbose with 'FALSE'", () => {
-  expect(getVerbose('FALSE')).toBe(false);
-});
-
 afterEach(() => {
   jest.clearAllMocks();
 });

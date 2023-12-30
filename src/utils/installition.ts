@@ -11,7 +11,6 @@ export async function setupOpenHSP(
   version: string,
   targets: string[],
   parallelNum: number,
-  verbose: boolean,
 ): Promise<string> {
   info('Downloading OpenHSP...');
   const downloadPath = await downloadTool(
@@ -21,9 +20,7 @@ export async function setupOpenHSP(
   );
   info('Extracting OpenHSP...');
   const extractPath = await extractTar(downloadPath);
-  if (verbose) {
-    debug(`extractedPath: ${extractPath}`);
-  }
+  debug(`extractedPath: ${extractPath}`);
   if (parallelNum > 1) {
     info('Building OpenHSP...');
     const { results, errors } = await PromisePool.for(targets)
@@ -34,11 +31,9 @@ export async function setupOpenHSP(
         });
       });
 
-    if (verbose) {
-      results.forEach((result) => {
-        info(result.toString());
-      });
-    }
+    results.forEach((result) => {
+      debug(result.toString());
+    });
 
     if (errors.length > 0) {
       throw errors[0];

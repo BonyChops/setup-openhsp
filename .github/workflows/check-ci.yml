@@ -22,7 +22,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache-dependency-path: 'typescript'
           cache: 'npm'
       - run: npm ci
       - run: npm run test

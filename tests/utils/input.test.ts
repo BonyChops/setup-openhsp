@@ -3,6 +3,7 @@ import {
   getBuildTargets,
   getOpenHSPVersion,
   getParallelBuildNumber,
+  getVerbose,
   suppoertedBuildTargets,
   supportedOpenHSPVersions,
   validateBuildTarget,
@@ -124,6 +125,22 @@ test('getParallelBuildNumber with 0', () => {
   expect(() => getParallelBuildNumber('0')).toThrow(
     'Parallel build number should be greater than 0',
   );
+});
+
+test("getVerbose with 'true'", () => {
+  expect(getVerbose('true')).toBe(true);
+});
+
+test("getVerbose with 'false'", () => {
+  expect(getVerbose('false')).toBe(false);
+});
+
+test("getVerbose with 'TRUE'", () => {
+  expect(getVerbose('TRUE')).toBe(true);
+});
+
+test("getVerbose with 'FALSE'", () => {
+  expect(getVerbose('FALSE')).toBe(false);
 });
 
 afterEach(() => {

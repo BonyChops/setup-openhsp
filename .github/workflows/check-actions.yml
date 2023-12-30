@@ -24,7 +24,10 @@ jobs:
           verbose: true
       - run: hspcmp ./tests/sample.hsp -o./tests/sample.ax
       - id: run_hsp
-        run: hsp3cl ./tests/sample.ax
+        run: |
+          echo "HSP_RESULT<<EOF" >> $GITHUB_OUTPUT
+          hsp3cl ./tests/sample.ax >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
       - name: test
         run: |
-          test "${{ steps.run_hsp.outputs.stdout }}" = "Hello, HSP!"
+          test "${{ steps.run_hsp.outputs.HSP_RESULT }}" = "Hello, world!"

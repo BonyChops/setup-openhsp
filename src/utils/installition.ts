@@ -2,6 +2,7 @@ import { debug, info } from '@actions/core';
 import { cacheDir, downloadTool, extractTar } from '@actions/tool-cache';
 import { PromisePool } from '@supercharge/promise-pool';
 import { execSync } from 'child_process';
+import fs from 'fs';
 
 export function getFetchUrl(version: string): string {
   return `https://github.com/onitama/OpenHSP/archive/refs/tags/${version}.tar.gz`;
@@ -19,7 +20,27 @@ export async function setupOpenHSP(
     'openhsp',
   );
   info('Extracting OpenHSP...');
-  const extractPath = await extractTar(downloadPath);
+  const extractPathForTar = await extractTar(downloadPath);
+
+  const extractDirForTar = fs.readdirSync(extractPathForTar, {
+    withFileTypes: true,
+  });
+
+  debug(`extractDirForTar: ${extractDirForTar}`);
+  extractDirForTar.forEach((dirent) => {
+    debug(`------------------`);
+    debug(`dirent.path: ${dirent.path}`);
+    debug(`dirent.isDirectory(): ${dirent.isDirectory()}`);
+  });
+
+  // get directories in extractPath
+  const extractPath = extractDirForTar.find((dirent) => dirent.isDirectory())
+    ?.path;
+
+  if (!extractPath) {
+    throw new Error('Extracted path is not found');
+  }
+
   debug(`extractedPath: ${extractPath}`);
   if (parallelNum > 1) {
     info('Building OpenHSP...');

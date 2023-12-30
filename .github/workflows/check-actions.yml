@@ -14,7 +14,7 @@ on:
 jobs:
   build_hsp:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Build HSP
     steps:
       - name: Checkout
         uses: actions/checkout@v3

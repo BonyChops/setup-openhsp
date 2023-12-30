@@ -1,7 +1,8 @@
 name: 'Setup OpenHSP environment'
 description: 'Set up your GitHub Actions workflow with a specific version of OpenHSP.'
-color: 'orange'
-icon: 'package'
+branding:
+  color: 'orange'
+  icon: 'package'
 author: 'BonyChops'
 inputs:
   build-targets:

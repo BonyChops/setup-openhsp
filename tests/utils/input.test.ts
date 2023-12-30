@@ -8,7 +8,7 @@ import {
   supportedOpenHSPVersions,
   validateBuildTarget,
   validateOpenHSPVersion,
-} from '../../src/setup/utils/input';
+} from '../../src/utils/input';
 
 const targets = ['hspcmp', 'hsp3cl', 'hsed', 'hsp3gp', 'hsp3dish', 'unknwown'];
 const versions = ['v3.6', 'v3.6beta5', 'v3.5'];

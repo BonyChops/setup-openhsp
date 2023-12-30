@@ -1,5 +1,5 @@
 import { addPath, setFailed } from '@actions/core';
-import { getInputs } from './setup/utils/input';
+import { getInputs } from './utils/input';
 import { setupOpenHSP } from './utils/installition';
 import { info } from 'console';
 

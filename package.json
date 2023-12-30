@@ -5,8 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build-setup": "ncc build -o dist/setup src/setup.ts -m",
-    "build-cache": "ncc build -o dist/cache src/cache.ts -m",
-    "build": "rimraf dist && npm run build-setup && npm run build-cache",
+    "build": "rimraf dist && npm run build-setup",
     "format": "prettier --write src/**/*.ts",
     "check-format": "prettier --check src/**/*.ts",
     "lint": "eslint src/**/*.ts",

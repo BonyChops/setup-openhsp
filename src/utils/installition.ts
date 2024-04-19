@@ -14,7 +14,14 @@ export async function setupOpenHSP(
   targets: string[],
   parallelNum: number,
 ): Promise<string> {
-  const toolPath = find(`openhsp-${targets.join('-')}`, version);
+  info(`fetching OpenHSP version ${version}...`);
+  debug(`targets: ${targets.join(', ')}`);
+  debug(`key: openhsp-${targets.join('-')}`);
+  debug(`version: ${version}`);
+  const toolPath = find(
+    `openhsp-${targets.join('-')}`,
+    version.replace('v', ''),
+  );
   if (toolPath) {
     info(`Found in cache @ ${toolPath}`);
     return toolPath;
@@ -82,7 +89,7 @@ export async function setupOpenHSP(
   const toolCachedDir = await cacheDir(
     extractPath,
     `openhsp-${targets.join('-')}`,
-    version,
+    version.replace('v', ''),
   );
 
   return toolCachedDir;
